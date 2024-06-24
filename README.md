@@ -3,6 +3,7 @@
 ## Introduction
 
 The Audio To Sign Language Tool is an innovative web application designed to bridge communication gaps by translating audio inputs or typed text into American Sign Language (ASL). This tool aims to make information more accessible to the deaf and hard-of-hearing community, leveraging technology to foster inclusivity.
+<img width="928" alt="image" src="https://github.com/zoeduong127/Signlanguage_M8/assets/118106249/0c29c874-c574-42c7-81be-dcc0a4948520">
 
 ## Features
 
