@@ -44,28 +44,65 @@ function playVideo(videoFile) {
     return new Promise(resolve => {
         const video = document.createElement('video');
         video.src = videoFile;
-        video.controls = true;
-        video.width = 400;
+        video.muted = true
+        video.width = 500;
         video.height = 300
         video.id = 'image-container';
+        video.autoplay = true;
 
         const graphicBlock = document.getElementById('image-container');
         graphicBlock.parentNode.replaceChild(video, graphicBlock);
 
-        video.onended = resolve; // Resolve the promise when the video ends
-        video.play();
+        video.onended = () => {
+            setTimeout(resolve, 0.00001); // Resolve promise immediately after video ends
+        };
     });
 }
 async function playVideos() {
-    for (const videoFile of videoFiles) {
-        console.log(videoFile);
-        await playVideo(videoFile); // Wait for the video to end before continuing
+    const keywordsDisplay = document.getElementById('keywordsDisplay');
+    const spans = keywordsDisplay.querySelectorAll('span');
+    for (let i = 0; i < videoFiles.length; i++) {
+        // if (i > 0) {
+        //     spans[i - 1].classList.remove('highlight');
+        // }
+        spans[i].classList.add('highlight');
+        await playVideo(videoFiles[i]); // Wait for the video to end before continuing
     }
+    // Remove highlight from the last letter after all videos are played
+    // spans[videoFiles.length - 1].classList.remove('highlight');
 }
 
 
 
 function startMic() {
-    // palceholder for audio recording start
-    console.log('Mic ON');
+    if (!('webkitSpeechRecognition' in window)) {
+        alert("Sorry, your browser doesn't support speech recognition. Try using Google Chrome.");
+        return;
+    }
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    recognition.start();
+
+    recognition.onstart = function() {
+        console.log('Voice recognition started. Try speaking into the microphone.');
+    };
+
+    recognition.onresult = function(event) {
+        const textInput = document.getElementById('textInput');
+        textInput.value = event.results[0][0].transcript;
+        recognition.stop();
+    };
+
+    recognition.onerror = function(event) {
+        console.error('Error occurred in recognition: ', event.error);
+        recognition.stop();
+    };
+
+    recognition.onend = function() {
+        console.log('Voice recognition ended.');
+    };
 }

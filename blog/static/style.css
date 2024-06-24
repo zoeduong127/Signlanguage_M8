@@ -80,12 +80,12 @@ button {
     font-weight: bold;
 }
 
+
 .keywords span {
     display: inline-block;
     margin: 5px;
     padding: 10px;
-    background-color: var(--primary);
-    color: var(--text);
+    background-color: yellow;
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
@@ -93,6 +93,9 @@ button {
 
 .keywords span:hover {
     transform: scale(1.1);
+}
+.highlight {
+    color: black;
 }
 
 .translation h2 {
