@@ -25,3 +25,9 @@ To install the Audio To Sign Language Tool, follow these steps:
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/audiotosignlanguagetool.git
+   ```
+2. Install required Python modules:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3.
