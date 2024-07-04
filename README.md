@@ -22,6 +22,14 @@ Before you begin, ensure you have met the following requirements:
 
 To install the Audio To Sign Language Tool, follow these steps:
 
-1. Clone the repository:
+1. Download and upzip project:
+2. cd to folder which have manage.py file
    ```bash
-   git clone https://github.com/yourusername/audiotosignlanguagetool.git
+   cd Signlanguage_M8-main
+3. Install nltk
+   pip install nltk
+4. Run the server
+   ```bash
+   python manage.py runserver
+5. Enter input by text or voice (via microphone icon) and click send to get the video of signlanguage
+
