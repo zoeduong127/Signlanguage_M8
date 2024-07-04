@@ -11,7 +11,6 @@ import os
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
-
 @csrf_exempt
 def index_view(request):
     if request.method == 'POST':
@@ -88,4 +87,3 @@ def index_view(request):
         return JsonResponse({'words': words})
     else:
         return render(request,'index.html')
-# Create your views here.
